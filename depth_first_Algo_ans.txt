@@ -1,0 +1,14 @@
+
+Question: 
+Discuss an algorithm to traverse a tree, depth first.
+
+Answer: 
+One of the most basic algorithms for traversing a tree is called depth-first search (DFS). Given a data represented in a tree-like form, depth-first search traverses a path/branch starting from the root, deep-down down the path to the bottom until there is no more nodes or points to traverse, then it returns to the starting point, and then traverses another branch deep-down until no more nodes to traverse. The points or nodes already traversed are marked as visited and will not be traversed again.
+
+I will try to use a WORD PUZZLE GAME to try to explain DFS. 
+In a word puzzle game, a player finds the first matching alphabet (the root) for a word, he then fixes his gaze on a particular path/direction to search for the other matching alphabet (connecting nodes) for the word, he continues in that path, until there is no more result to find. if all the alphabets (connecting nodes) found in the path matches the word, hurray, word is found!. if not, he returns to the starting alphabet (the root) and then continues in another path or direction in search of a matching alphabet (nodes), until a result is found or not. 
+
+But the most important point in the above explanation, is that the player continues in a particular path, unitil there is nore more alphabet to find. He traverses from the root (the starting alphabet), deep-down to the bottom of a path, until nore more result to find. All traversed alphabets are marked as visited and will not be traversed again.
+
+The most common implementation of DFS is in the graph theory , in finding all connected vertices.
+

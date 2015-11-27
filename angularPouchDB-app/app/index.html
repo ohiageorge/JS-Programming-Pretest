@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="taskApp"> 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Task Manager</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="css/app.css">
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/pouchdb/dist/pouchdb.min.js"></script>
+  <script src="bower_components/angular-pouchdb/angular-pouchdb.js"></script>
+  <script src="js/task_controller.js"></script>
+</head>
+<body ng-controller="taskCtrl">
+  <div class="container-fluid
+  <section class="padding">
+	<h2> My Task Manager</p>
+	<!--Content body -->
+	<div class="row"> 
+		<div class="col-md-6 col-lg-6 col-sm-12">
+		<form ng-submit="addTask(title)">
+		  <input type="text" ng-model="title">
+		  <button class="btn btn-warning" type="submit">Add Task</button>
+		</form>
+		<p class="alert alert-warning" ng-if="err"> {{err.message}}</> <!--Place holder for error msg -->
+		
+		<!-- Table for Tasks-->
+			<table class="table table-striped"> 
+				<thead>
+					<tr>				
+						<th> Title </th>
+						<th> Date created</th>
+						<th> Action </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="task in tasks"> 
+						<td> {{task.doc.title}}
+						<div ng-if="task.editMode">
+						  <form ng-submit="editTask(task)">
+							<input type="text" ng-model="task.doc.title">
+							<button class="btn" type="submit">edit</button>
+						  </form>
+						</div>
+						</td> 
+						<td> {{task.doc.createdAt}}</td>
+						<td>     
+							<button class="btn btn-danger" ng-click="deleteTask(task.doc, $index)">delete</button>
+							<button class="btn btn-default" ng-click="task.editMode = true" ng-if="!task.editMode">edit</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--// -->
+		</div>
+		</div>
+	</section>
+  </div>
+</body>
+</html>
